@@ -1,0 +1,29 @@
+---
+title: 'Course Project 1: Data Products'
+output: html_document
+---
+
+## Five biggest soccer stadiums in Germany
+
+Thursday, Feb 2nd 2017
+
+```{r, echo=FALSE}
+library(leaflet)
+
+lat <- c(51.4925888,48.2188033,52.5147003,51.5546342,48.7922577)
+lng <- c(7.4518574,11.6225185,13.2373099,7.0653375,9.2298913)
+stadium_names <- c("Signal Iduna Park - Dortmund",
+           "Allianz Arena - Munich",
+           "Olympiastadion Berlin - Berlin",
+           "Veltins-Arena - Gelsenkirchen",
+           "Mercedes-Benz Arena - Stuttgart"
+           )
+
+stadiums <- data.frame(lat,lng)
+
+stadiums %>% 
+        leaflet() %>%
+        addTiles() %>%
+        addMarkers(popup = stadium_names)
+
+```
