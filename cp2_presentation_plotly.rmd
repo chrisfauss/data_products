@@ -1,0 +1,27 @@
+---
+title: 'Course Project 2: <br> R Markdown Presentation & Plotly'
+output: ioslides_presentation
+date: Feb 07 2017
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## 3-D Investigation
+
+Plot compares miles per gallon, weight and quarter mile time from the mtcars data set in 3D scatter plot.
+```{r, echo = TRUE, include=FALSE}
+# Data preparation
+        library(plotly)
+        d <- mtcars
+        d <- d[,c(1,2,6,7)]
+        names(d) <- c("miles_per_gallon","number_cylinders","weight","qrt_mile_time")
+
+```
+
+
+```{r cars, echo = FALSE, warning=FALSE}
+plot_ly(d, x = ~weight, y = ~miles_per_gallon, z = ~qrt_mile_time,
+        type = "scatter3d", mode = "markers", color = as.factor(d$number_cylinders))
+```
